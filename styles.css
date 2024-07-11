@@ -1,0 +1,196 @@
+/* Hide cursor on mobile devices */
+@media (max-width: 768px) {
+    body, .container, input[type="text"], button, ul, li {
+        cursor: none !important;
+    }
+    #customCursor {
+        opacity: 0;
+    }
+}
+
+.hide-cursor, .hide-cursor * {
+    cursor: none !important;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;700&display=swap');
+
+body {
+    font-family: 'Raleway', sans-serif;
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(45deg, #000000, #0d0d42, #1a1a84, #2626c5);
+    background-size: 600% 600%;
+    animation: gradientAnimation 10s ease infinite;
+    cursor: none; /* Hide default cursor */
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    backdrop-filter: blur(10px);
+    max-width: 300px;
+    overflow: hidden;
+    cursor: none; /* Hide default cursor */
+}
+
+h1 {
+    margin-top: 0;
+    color: white;
+}
+
+input[type="text"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: none; /* Hide default cursor */
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: none; /* Hide default cursor */
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #218838;
+    cursor: none; /* Hide default cursor */
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #888 #444;
+    cursor: none; /* Hide default cursor */
+}
+
+ul::-webkit-scrollbar {
+    width: 8px;
+    cursor: none; /* Hide default cursor */
+}
+
+ul::-webkit-scrollbar-track {
+    background: #444;
+}
+
+ul::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+    border: 2px solid #444;
+    animation: pulse 2s infinite;
+    cursor: none; /* Hide default cursor */
+}
+
+@keyframes pulse {
+    0%, 100% {
+        background-color: #888;
+    }
+    50% {
+        background-color: #bbb;
+    }
+}
+
+li {
+    background-color: rgba(255, 255, 255, 0.1);
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.2);
+    animation: fadeIn 0.5s ease;
+    color: white;
+    cursor: none; /* Hide default cursor */
+}
+
+li.completed {
+    text-decoration: line-through;
+    color: #bbb;
+}
+
+li button {
+    background-color: #dc3545;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: none; /* Hide default cursor */
+    transition: background-color 0.3s ease;
+}
+
+li button:hover {
+    background-color: #c82333;
+    cursor: none; /* Hide default cursor */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#backgroundCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+#customCursor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: background-color 0.3s ease;
+    z-index: 1000; /* Ensure the cursor is above other elements */
+}
+
+.trail {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    position: absolute;
+    pointer-events: none;
+    border-radius: 50%;
+    animation: trailFade 0.5s ease-out forwards;
+    transform: translate(-50%, -50%);
+    z-index: 999; /* Ensure the trails are below the cursor */
+}
+
+@keyframes trailFade {
+    to {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+}
